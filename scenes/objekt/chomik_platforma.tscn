@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://d1yx35208lape"]
+
+[ext_resource type="Texture2D" uid="uid://bir1grr72dsjw" path="res://assets/chomik.png" id="1_e1eaj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swg5o"]
+size = Vector2(145, 35.5)
+
+[node name="StaticBody2D2" type="AnimatableBody2D" unique_id=783956413]
+scale = Vector2(0.9999998, 0.9999998)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=123165610]
+position = Vector2(-18.402588, -5.114609)
+rotation = 0.019760275
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_swg5o")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=1301596421]
+position = Vector2(10.5, 2.7500153)
+rotation = -0.019760275
+scale = Vector2(1.1795578, 0.7112745)
+texture = ExtResource("1_e1eaj")
