@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bj7dkjhaude87"]
+
+[ext_resource type="Script" uid="uid://ds4ehyioytmo" path="res://damian.gd" id="1_dyacw"]
+[ext_resource type="Texture2D" uid="uid://qbbsl77ype1g" path="res://damian_sprite_chodzenie prawo1.png" id="2_561rt"]
+[ext_resource type="Texture2D" uid="uid://dm5xcdmbl0gya" path="res://damian_sprite.png" id="2_dyacw"]
+[ext_resource type="Texture2D" uid="uid://f1af41wu6cw6" path="res://damian_sprite_chodzenie prawo2.png" id="3_4whvt"]
+[ext_resource type="Texture2D" uid="uid://dvdvqb8lexyal" path="res://damian_sprite2.png" id="3_e0b7d"]
+[ext_resource type="Texture2D" uid="uid://1ltjp0hm404c" path="res://skok1.png" id="3_qxr17"]
+[ext_resource type="Texture2D" uid="uid://b8hjoikyi1eyd" path="res://skok2.png" id="4_e0b7d"]
+[ext_resource type="Texture2D" uid="uid://c13osdn3ickjr" path="res://damian_sprite_chodzenie prawo3.png" id="4_qxr17"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyacw"]
+size = Vector2(65, 109.461075)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bkahj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dyacw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e0b7d")
+}],
+"loop": 2,
+"name": &" idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qxr17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e0b7d")
+}],
+"loop": 0,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_561rt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4whvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qxr17")
+}],
+"loop": 0,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=102041071]
+script = ExtResource("1_dyacw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1130129313]
+position = Vector2(0.0008544922, 0.07785034)
+shape = SubResource("RectangleShape2D_dyacw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1465085287]
+position = Vector2(1.0008659, -5.9221444)
+scale = Vector2(0.59999985, 0.7)
+sprite_frames = SubResource("SpriteFrames_bkahj")
+animation = &" idle"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1012102862]
