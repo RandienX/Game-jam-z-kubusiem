@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ddob733mlfjy2"]
+
+[ext_resource type="Texture2D" uid="uid://d1n8aqnqpqnc6" path="res://assets/tilemaps/template.png" id="2_q4qr2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gif0e"]
+atlas = ExtResource("2_q4qr2")
+region = Rect2(192, 192, 64, 64)
+
+[node name="TextureRect" type="TextureRect" unique_id=1583037708]
+z_index = -1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = SubResource("AtlasTexture_gif0e")
+stretch_mode = 1

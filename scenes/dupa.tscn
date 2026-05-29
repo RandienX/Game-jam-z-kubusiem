@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c6pgbpsnag8a3"]
 
 [ext_resource type="PackedScene" uid="uid://bj7dkjhaude87" path="res://scenes/objekt/damian.tscn" id="1_y4xbc"]
-[ext_resource type="Script" uid="uid://cftyadu1645u4" path="res://scenes/objekt/path_follow_2d.gd" id="2_585yh"]
+[ext_resource type="Script" uid="uid://cftyadu1645u4" path="res://scenes/objekt/chomik.gd" id="2_585yh"]
 [ext_resource type="PackedScene" uid="uid://d1yx35208lape" path="res://scenes/objekt/chomik_platforma.tscn" id="3_585yh"]
-[ext_resource type="TileSet" uid="uid://dj4ougu1nvfv" path="res://scenes/objekt/goon_tileset.tres" id="4_7kfkv"]
+[ext_resource type="TileSet" uid="uid://dj4ougu1nvfv" path="res://assets/tilemaps/goon_tileset.tres" id="4_7kfkv"]
 
 [sub_resource type="Curve2D" id="Curve2D_ojrph"]
 _data = {

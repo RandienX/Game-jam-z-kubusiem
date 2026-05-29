@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://dw057qno6ckw1"]
 
 [ext_resource type="Script" uid="uid://ccmphi4pextlv" path="res://scenes/menu.gd" id="1_4ytvr"]
-[ext_resource type="FontFile" uid="uid://c4mb0du4uug3l" path="res://Blackbold.otf" id="1_mhnvy"]
+[ext_resource type="FontFile" uid="uid://c4mb0du4uug3l" path="res://assets/Blackbold.otf" id="1_mhnvy"]
 [ext_resource type="Texture2D" uid="uid://ns3knu6pylwe" path="res://assets/menu/play_button.png" id="2_4ytvr"]
 [ext_resource type="Texture2D" uid="uid://8bqfrf68s0w1" path="res://assets/menu/menu_bg.png" id="2_7jp70"]
 [ext_resource type="Texture2D" uid="uid://bjva0cbc3jxjp" path="res://assets/menu/settings_button.png" id="3_g3eks"]
+[ext_resource type="PackedScene" uid="uid://dwq0x0oepgxe4" path="res://scenes/lvl_button.tscn" id="4_6cdou"]
 [ext_resource type="Texture2D" uid="uid://dyvvqvkn1rsk0" path="res://assets/menu/quit_button.png" id="4_v86rl"]
 [ext_resource type="Texture2D" uid="uid://1x5vivv1mjwx" path="res://assets/menu/levelbutton/1.png" id="6_i42df"]
-[ext_resource type="Texture2D" uid="uid://7lsm3m87tw6v" path="res://assets/menu/levelbutton/2.png" id="7_7jp70"]
 [ext_resource type="Texture2D" uid="uid://cl6gvcgmh2frw" path="res://assets/menu/levelbutton/3.png" id="8_mxgkd"]
 [ext_resource type="Texture2D" uid="uid://d3t8t0obbufyq" path="res://assets/menu/levelbutton/4.png" id="9_g6gyw"]
 [ext_resource type="Texture2D" uid="uid://bh7oc1wwt54ij" path="res://assets/menu/levelbutton/5.png" id="10_3dmrc"]
+[ext_resource type="Texture2D" uid="uid://dycd8gidx27q2" path="res://assets/menu/level_lock.png" id="10_i42df"]
 [ext_resource type="Texture2D" uid="uid://dxxkv7ixs0dww" path="res://assets/menu/levelbutton/67.png" id="11_81l6r"]
 [ext_resource type="Texture2D" uid="uid://dp12smsdvasnu" path="res://assets/menu/levelbutton/8.png" id="12_rsfmq"]
 [ext_resource type="Texture2D" uid="uid://6fmmpm0bvih7" path="res://assets/menu/levelbutton/9.png" id="13_oi1it"]
@@ -37,6 +38,14 @@ variation_transform = Transform2D(1, 0.4, 0.05, 1, 0, 0)
 spacing_glyph = -2
 spacing_space = -5
 baseline_offset = 0.09
+
+[sub_resource type="GDScript" id="GDScript_7jp70"]
+script/source = "extends TextureRect
+
+func _ready() -> void:
+	await get_tree().physics_frame
+	visible = $\"../TextureRect\".visible
+"
 
 [node name="Control" type="Control" unique_id=1991496867 node_paths=PackedStringArray("main", "play", "sett")]
 layout_mode = 3
@@ -87,59 +96,68 @@ layout_mode = 2
 [node name="up_lvl" type="HBoxContainer" parent="play/levels" unique_id=716535362]
 layout_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="play/levels/up_lvl" unique_id=290480726]
-custom_minimum_size = Vector2(128, 128)
+[node name="TextureButton2" parent="play/levels/up_lvl" unique_id=660870171 instance=ExtResource("4_6cdou")]
 layout_mode = 2
 texture_normal = ExtResource("6_i42df")
+lvl_scene_path = "res://scenes/levels/1.tscn"
 
-[node name="TextureButton2" type="TextureButton" parent="play/levels/up_lvl" unique_id=1980620430]
-custom_minimum_size = Vector2(128, 128)
+[node name="TextureButton3" parent="play/levels/up_lvl" unique_id=1146442385 instance=ExtResource("4_6cdou")]
 layout_mode = 2
-texture_normal = ExtResource("7_7jp70")
+unlock_by_lvl = 1
 
-[node name="TextureButton3" type="TextureButton" parent="play/levels/up_lvl" unique_id=1367721813]
-custom_minimum_size = Vector2(128, 128)
+[node name="TextureButton4" parent="play/levels/up_lvl" unique_id=1644950136 instance=ExtResource("4_6cdou")]
 layout_mode = 2
 texture_normal = ExtResource("8_mxgkd")
+unlock_by_lvl = 2
 
-[node name="TextureButton4" type="TextureButton" parent="play/levels/up_lvl" unique_id=142726483]
-custom_minimum_size = Vector2(128, 128)
+[node name="TextureButton5" parent="play/levels/up_lvl" unique_id=44419279 instance=ExtResource("4_6cdou")]
 layout_mode = 2
 texture_normal = ExtResource("9_g6gyw")
+unlock_by_lvl = 3
 
-[node name="TextureButton5" type="TextureButton" parent="play/levels/up_lvl" unique_id=487126916]
-custom_minimum_size = Vector2(128, 128)
+[node name="TextureButton6" parent="play/levels/up_lvl" unique_id=1957969448 instance=ExtResource("4_6cdou")]
 layout_mode = 2
 texture_normal = ExtResource("10_3dmrc")
+unlock_by_lvl = 4
 
 [node name="down_lvl" type="HBoxContainer" parent="play/levels" unique_id=1869943342]
 layout_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="play/levels/down_lvl" unique_id=1154376251]
-custom_minimum_size = Vector2(128, 128)
+[node name="TextureButton2" parent="play/levels/down_lvl" unique_id=529803633 instance=ExtResource("4_6cdou")]
 layout_mode = 2
 texture_normal = ExtResource("11_81l6r")
+unlock_by_lvl = 5
 
-[node name="TextureButton2" type="TextureButton" parent="play/levels/down_lvl" unique_id=1011438467]
-custom_minimum_size = Vector2(128, 128)
+[node name="TextureRect2" type="TextureRect" parent="play/levels/down_lvl/TextureButton2" unique_id=1526640276]
+layout_mode = 0
+offset_left = 132.0
+offset_right = 260.0
+offset_bottom = 128.0
+texture = ExtResource("10_i42df")
+script = SubResource("GDScript_7jp70")
+
+[node name="TextureButton3" parent="play/levels/down_lvl" unique_id=1732776292 instance=ExtResource("4_6cdou")]
 layout_mode = 2
 texture_normal = ExtResource("12_rsfmq")
+unlock_by_lvl = 6
 
-[node name="TextureButton3" type="TextureButton" parent="play/levels/down_lvl" unique_id=1967813769]
-custom_minimum_size = Vector2(128, 128)
+[node name="TextureButton4" parent="play/levels/down_lvl" unique_id=2090992525 instance=ExtResource("4_6cdou")]
 layout_mode = 2
 texture_normal = ExtResource("13_oi1it")
+unlock_by_lvl = 8
 
-[node name="TextureButton4" type="TextureButton" parent="play/levels/down_lvl" unique_id=1742650023]
-custom_minimum_size = Vector2(128, 128)
+[node name="TextureButton5" parent="play/levels/down_lvl" unique_id=2131626548 instance=ExtResource("4_6cdou")]
 layout_mode = 2
 texture_normal = ExtResource("14_fy8yy")
+unlock_by_lvl = 9
 
 [node name="main" type="CenterContainer" parent="." unique_id=1307030794]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="main" unique_id=1681526591]
 custom_minimum_size = Vector2(490, 340)
@@ -179,7 +197,6 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[connection signal="pressed" from="play/levels/up_lvl/TextureButton" to="." method="_on_1_pressed"]
 [connection signal="pressed" from="main/VBoxContainer/buttons/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="main/VBoxContainer/buttons/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="main/VBoxContainer/buttons/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

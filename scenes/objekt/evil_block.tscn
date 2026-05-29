@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://c36jgx75itf0q"]
+
+[ext_resource type="Script" uid="uid://ceut3ec2iofyn" path="res://scenes/objekt/evil_block.gd" id="1_nvf18"]
+[ext_resource type="Texture2D" uid="uid://5a1q08vhb7dv" path="res://assets/traps/evil_block.png" id="2_tgx3w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rko2x"]
+size = Vector2(36, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xys7"]
+size = Vector2(32, 8)
+
+[sub_resource type="Animation" id="Animation_nvf18"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tgx3w"]
+resource_name = "bonk"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668),
+"transitions": PackedFloat32Array(1, 1.5157168, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -16), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rko2x"]
+_data = {
+&"RESET": SubResource("Animation_nvf18"),
+&"bonk": SubResource("Animation_tgx3w")
+}
+
+[node name="evil_block" type="StaticBody2D" unique_id=660563284]
+script = ExtResource("1_nvf18")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=127336079]
+texture = ExtResource("2_tgx3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=808861536]
+shape = SubResource("RectangleShape2D_rko2x")
+
+[node name="start" type="Area2D" parent="." unique_id=504954987]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="start" unique_id=442595091]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_8xys7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1117699495]
+libraries/ = SubResource("AnimationLibrary_rko2x")
+
+[connection signal="body_entered" from="start" to="." method="_on_start_body_entered"]
