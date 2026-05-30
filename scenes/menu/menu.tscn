@@ -1,0 +1,485 @@
+[gd_scene format=3 uid="uid://dw057qno6ckw1"]
+
+[ext_resource type="Script" uid="uid://ccmphi4pextlv" path="res://scenes/menu/menu.gd" id="1_4ytvr"]
+[ext_resource type="FontFile" uid="uid://c4mb0du4uug3l" path="res://assets/Blackbold.otf" id="1_mhnvy"]
+[ext_resource type="Texture2D" uid="uid://ns3knu6pylwe" path="res://assets/menu/play_button.png" id="2_4ytvr"]
+[ext_resource type="Texture2D" uid="uid://8bqfrf68s0w1" path="res://assets/menu/menu_bg.png" id="2_7jp70"]
+[ext_resource type="Texture2D" uid="uid://bjva0cbc3jxjp" path="res://assets/menu/settings_button.png" id="3_g3eks"]
+[ext_resource type="PackedScene" uid="uid://dwq0x0oepgxe4" path="res://scenes/menu/lvl_button.tscn" id="4_6cdou"]
+[ext_resource type="Texture2D" uid="uid://dyvvqvkn1rsk0" path="res://assets/menu/quit_button.png" id="4_v86rl"]
+[ext_resource type="Texture2D" uid="uid://1x5vivv1mjwx" path="res://assets/menu/levelbutton/1.png" id="6_i42df"]
+[ext_resource type="Texture2D" uid="uid://cl6gvcgmh2frw" path="res://assets/menu/levelbutton/3.png" id="8_mxgkd"]
+[ext_resource type="Texture2D" uid="uid://d3t8t0obbufyq" path="res://assets/menu/levelbutton/4.png" id="9_g6gyw"]
+[ext_resource type="Texture2D" uid="uid://bh7oc1wwt54ij" path="res://assets/menu/levelbutton/5.png" id="10_3dmrc"]
+[ext_resource type="Texture2D" uid="uid://dycd8gidx27q2" path="res://assets/menu/level_lock.png" id="10_i42df"]
+[ext_resource type="Texture2D" uid="uid://dxxkv7ixs0dww" path="res://assets/menu/levelbutton/67.png" id="11_81l6r"]
+[ext_resource type="Texture2D" uid="uid://dp12smsdvasnu" path="res://assets/menu/levelbutton/8.png" id="12_rsfmq"]
+[ext_resource type="Texture2D" uid="uid://6fmmpm0bvih7" path="res://assets/menu/levelbutton/9.png" id="13_oi1it"]
+[ext_resource type="Texture2D" uid="uid://dns1c4gwb5hb0" path="res://assets/menu/levelbutton/10.png" id="14_fy8yy"]
+[ext_resource type="Script" uid="uid://c7ij27gsi5oj3" path="res://scenes/menu/controls_button.gd" id="17_2j8sj"]
+[ext_resource type="Script" uid="uid://pmaf644x7tgv" path="res://scenes/menu/settings.gd" id="17_faisu"]
+[ext_resource type="Texture2D" uid="uid://jwjkdd87xlby" path="res://assets/menu/settings_tab_bg.png" id="17_rrod7"]
+[ext_resource type="Texture2D" uid="uid://b0hhpvvyfqxea" path="res://assets/menu/control_remap.png" id="18_faisu"]
+
+[sub_resource type="FontVariation" id="FontVariation_13sgg"]
+base_font = ExtResource("1_mhnvy")
+variation_embolden = -2.0
+spacing_glyph = -3
+
+[sub_resource type="FontVariation" id="FontVariation_i6lef"]
+base_font = ExtResource("1_mhnvy")
+variation_embolden = 0.2
+opentype_features = {
+1801810542: 1
+}
+spacing_glyph = -1
+spacing_space = -5
+
+[sub_resource type="FontVariation" id="FontVariation_70i5f"]
+base_font = ExtResource("1_mhnvy")
+variation_embolden = -0.2
+variation_transform = Transform2D(1, 0.4, 0.05, 1, 0, 0)
+spacing_glyph = -2
+spacing_space = -5
+baseline_offset = 0.09
+
+[sub_resource type="GDScript" id="GDScript_7jp70"]
+script/source = "extends TextureRect
+
+func _ready() -> void:
+	await get_tree().physics_frame
+	visible = $\"../TextureRect\".visible
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_faisu"]
+texture = ExtResource("18_faisu")
+texture_margin_left = 12.0
+texture_margin_top = 6.0
+texture_margin_right = 8.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="FontVariation" id="FontVariation_t2e6u"]
+base_font = ExtResource("1_mhnvy")
+variation_embolden = 0.5
+variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
+spacing_glyph = 1
+spacing_space = 5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pjdsv"]
+texture = ExtResource("17_rrod7")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fb4qf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_riv3r"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ns7vx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Control" type="Control" unique_id=1991496867 node_paths=PackedStringArray("main", "play", "sett")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4ytvr")
+main = NodePath("main")
+play = NodePath("play")
+sett = NodePath("sett")
+
+[node name="bg" type="TextureRect" parent="." unique_id=1355471291]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+texture = ExtResource("2_7jp70")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=894621351]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 0
+offset_left = 250.0
+offset_top = 38.0
+offset_right = 740.0
+offset_bottom = 98.0
+theme_override_fonts/normal_font = SubResource("FontVariation_13sgg")
+theme_override_fonts/bold_font = SubResource("FontVariation_i6lef")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_70i5f")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+theme_override_font_sizes/bold_italics_font_size = 28
+bbcode_enabled = true
+text = "[color=medium_violet_red][b]Damian's [color=orange][i]Exciting[/i] [color=medium_violet_red]Trip Home."
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="play" type="CenterContainer" parent="." unique_id=159178063]
+layout_mode = 0
+offset_right = 990.0
+offset_bottom = 540.0
+
+[node name="levels" type="VBoxContainer" parent="play" unique_id=1668534820]
+layout_mode = 2
+
+[node name="up_lvl" type="HBoxContainer" parent="play/levels" unique_id=716535362]
+layout_mode = 2
+
+[node name="TextureButton2" parent="play/levels/up_lvl" unique_id=660870171 instance=ExtResource("4_6cdou")]
+layout_mode = 2
+texture_normal = ExtResource("6_i42df")
+lvl_scene_path = "res://scenes/levels/1.tscn"
+
+[node name="TextureButton3" parent="play/levels/up_lvl" unique_id=1146442385 instance=ExtResource("4_6cdou")]
+layout_mode = 2
+unlock_by_lvl = 1
+
+[node name="TextureButton4" parent="play/levels/up_lvl" unique_id=1644950136 instance=ExtResource("4_6cdou")]
+layout_mode = 2
+texture_normal = ExtResource("8_mxgkd")
+unlock_by_lvl = 2
+
+[node name="TextureButton5" parent="play/levels/up_lvl" unique_id=44419279 instance=ExtResource("4_6cdou")]
+layout_mode = 2
+texture_normal = ExtResource("9_g6gyw")
+unlock_by_lvl = 3
+
+[node name="TextureButton6" parent="play/levels/up_lvl" unique_id=1957969448 instance=ExtResource("4_6cdou")]
+layout_mode = 2
+texture_normal = ExtResource("10_3dmrc")
+unlock_by_lvl = 4
+
+[node name="down_lvl" type="HBoxContainer" parent="play/levels" unique_id=1869943342]
+layout_mode = 2
+
+[node name="TextureButton2" parent="play/levels/down_lvl" unique_id=529803633 instance=ExtResource("4_6cdou")]
+layout_mode = 2
+texture_normal = ExtResource("11_81l6r")
+unlock_by_lvl = 5
+
+[node name="TextureRect2" type="TextureRect" parent="play/levels/down_lvl/TextureButton2" unique_id=1526640276]
+layout_mode = 0
+offset_left = 132.0
+offset_right = 260.0
+offset_bottom = 128.0
+texture = ExtResource("10_i42df")
+script = SubResource("GDScript_7jp70")
+
+[node name="TextureButton3" parent="play/levels/down_lvl" unique_id=1732776292 instance=ExtResource("4_6cdou")]
+layout_mode = 2
+texture_normal = ExtResource("12_rsfmq")
+unlock_by_lvl = 6
+
+[node name="TextureButton4" parent="play/levels/down_lvl" unique_id=2090992525 instance=ExtResource("4_6cdou")]
+layout_mode = 2
+texture_normal = ExtResource("13_oi1it")
+unlock_by_lvl = 8
+
+[node name="TextureButton5" parent="play/levels/down_lvl" unique_id=2131626548 instance=ExtResource("4_6cdou")]
+layout_mode = 2
+texture_normal = ExtResource("14_fy8yy")
+unlock_by_lvl = 9
+
+[node name="Panel" type="Panel" parent="play" unique_id=451195391]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="play/Panel" unique_id=494939855]
+custom_minimum_size = Vector2(192, 48)
+layout_mode = 0
+offset_left = 208.0
+offset_top = 143.0
+offset_right = 400.0
+offset_bottom = 191.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_faisu")
+text = "Back"
+
+[node name="main" type="CenterContainer" parent="." unique_id=1307030794]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main" unique_id=1681526591]
+custom_minimum_size = Vector2(490, 340)
+layout_mode = 2
+
+[node name="buttons" type="CenterContainer" parent="main/VBoxContainer" unique_id=1916960936]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main/VBoxContainer/buttons" unique_id=2031777494]
+custom_minimum_size = Vector2(180, 72)
+layout_mode = 2
+
+[node name="Play" type="TextureButton" parent="main/VBoxContainer/buttons/VBoxContainer" unique_id=1684218070]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 2
+texture_normal = ExtResource("2_4ytvr")
+stretch_mode = 5
+
+[node name="Settings" type="TextureButton" parent="main/VBoxContainer/buttons/VBoxContainer" unique_id=2004138476]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 2
+texture_normal = ExtResource("3_g3eks")
+stretch_mode = 5
+
+[node name="Exit" type="TextureButton" parent="main/VBoxContainer/buttons/VBoxContainer" unique_id=328871581]
+custom_minimum_size = Vector2(160, 100)
+custom_maximum_size = Vector2(160, 100)
+layout_mode = 2
+texture_normal = ExtResource("4_v86rl")
+stretch_mode = 5
+
+[node name="sett" type="CenterContainer" parent="." unique_id=1884639862]
+visible = false
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+script = ExtResource("17_faisu")
+
+[node name="TabContainer" type="TabContainer" parent="sett" unique_id=1136073604]
+custom_minimum_size = Vector2(384, 192)
+layout_mode = 2
+theme_override_colors/font_selected_color = Color(0.5058824, 1, 0, 1)
+theme_override_colors/font_hovered_color = Color(0.68235296, 0.5686275, 0.22352941, 1)
+theme_override_colors/font_unselected_color = Color(1, 0, 0.32156864, 1)
+theme_override_fonts/font = SubResource("FontVariation_t2e6u")
+theme_override_styles/panel = SubResource("StyleBoxTexture_pjdsv")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_fb4qf")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_riv3r")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_ns7vx")
+current_tab = 0
+
+[node name="Settings_" type="MarginContainer" parent="sett/TabContainer" unique_id=1414055042]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+metadata/_tab_index = 0
+
+[node name="Settings" type="VBoxContainer" parent="sett/TabContainer/Settings_" unique_id=1897829336]
+layout_mode = 2
+
+[node name="MasterVolume" type="HBoxContainer" parent="sett/TabContainer/Settings_/Settings" unique_id=5046407]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="sett/TabContainer/Settings_/Settings/MasterVolume" unique_id=924162638]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="HSeparator" type="HSeparator" parent="sett/TabContainer/Settings_/Settings/MasterVolume" unique_id=1125739666]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="sett/TabContainer/Settings_/Settings/MasterVolume" unique_id=1044368077]
+layout_mode = 2
+
+[node name="Slider" type="HSlider" parent="sett/TabContainer/Settings_/Settings/MasterVolume/VBoxContainer" unique_id=556842041]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="ValueLabel" type="Label" parent="sett/TabContainer/Settings_/Settings/MasterVolume/VBoxContainer" unique_id=1308153892]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "100%"
+horizontal_alignment = 1
+
+[node name="MusicVolume" type="HBoxContainer" parent="sett/TabContainer/Settings_/Settings" unique_id=1653282629]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="sett/TabContainer/Settings_/Settings/MusicVolume" unique_id=865639515]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="HSeparator" type="HSeparator" parent="sett/TabContainer/Settings_/Settings/MusicVolume" unique_id=1520154326]
+custom_minimum_size = Vector2(115, 0)
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="sett/TabContainer/Settings_/Settings/MusicVolume" unique_id=504911843]
+layout_mode = 2
+
+[node name="Slider" type="HSlider" parent="sett/TabContainer/Settings_/Settings/MusicVolume/VBoxContainer" unique_id=1209851296]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="ValueLabel" type="Label" parent="sett/TabContainer/Settings_/Settings/MusicVolume/VBoxContainer" unique_id=1717819231]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "100%"
+horizontal_alignment = 1
+
+[node name="SfxVolume" type="HBoxContainer" parent="sett/TabContainer/Settings_/Settings" unique_id=576773067]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="sett/TabContainer/Settings_/Settings/SfxVolume" unique_id=1842937724]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="HSeparator" type="HSeparator" parent="sett/TabContainer/Settings_/Settings/SfxVolume" unique_id=186840472]
+custom_minimum_size = Vector2(134, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="sett/TabContainer/Settings_/Settings/SfxVolume" unique_id=1368911248]
+layout_mode = 2
+
+[node name="Slider" type="HSlider" parent="sett/TabContainer/Settings_/Settings/SfxVolume/VBoxContainer" unique_id=175167949]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="ValueLabel" type="Label" parent="sett/TabContainer/Settings_/Settings/SfxVolume/VBoxContainer" unique_id=1169613783]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "100%"
+horizontal_alignment = 1
+
+[node name="SkipCutscenes" type="HBoxContainer" parent="sett/TabContainer/Settings_/Settings" unique_id=242278330]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="sett/TabContainer/Settings_/Settings/SkipCutscenes" unique_id=248250552]
+layout_mode = 2
+text = "Skip Cutscenes"
+
+[node name="HSeparator" type="HSeparator" parent="sett/TabContainer/Settings_/Settings/SkipCutscenes" unique_id=1886538708]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="CheckBox" type="CheckBox" parent="sett/TabContainer/Settings_/Settings/SkipCutscenes" unique_id=520747712]
+layout_mode = 2
+
+[node name="_Controls" type="MarginContainer" parent="sett/TabContainer" unique_id=232264888]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+metadata/_tab_index = 1
+
+[node name="Controls" type="GridContainer" parent="sett/TabContainer/_Controls" unique_id=93988304]
+layout_mode = 2
+theme_override_constants/h_separation = 128
+theme_override_constants/v_separation = 40
+columns = 2
+
+[node name="TextureButton" type="TextureButton" parent="sett/TabContainer/_Controls/Controls" unique_id=2080768747]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("18_faisu")
+script = ExtResource("17_2j8sj")
+action = "left"
+
+[node name="Label" type="Label" parent="sett/TabContainer/_Controls/Controls/TextureButton" unique_id=1321119676]
+custom_minimum_size = Vector2(128, 48)
+custom_maximum_size = Vector2(128, -1)
+layout_mode = 0
+offset_left = 49.0
+offset_top = 1.0
+offset_right = 165.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 14
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureButton2" type="TextureButton" parent="sett/TabContainer/_Controls/Controls" unique_id=1453025461]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("18_faisu")
+script = ExtResource("17_2j8sj")
+action = "right"
+
+[node name="Label" type="Label" parent="sett/TabContainer/_Controls/Controls/TextureButton2" unique_id=455203370]
+custom_minimum_size = Vector2(128, 48)
+custom_maximum_size = Vector2(128, -1)
+layout_mode = 0
+offset_left = 49.0
+offset_top = 1.0
+offset_right = 165.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 14
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureButton3" type="TextureButton" parent="sett/TabContainer/_Controls/Controls" unique_id=4168346]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("18_faisu")
+script = ExtResource("17_2j8sj")
+action = "jump"
+
+[node name="Label" type="Label" parent="sett/TabContainer/_Controls/Controls/TextureButton3" unique_id=475451987]
+custom_minimum_size = Vector2(128, 48)
+custom_maximum_size = Vector2(128, -1)
+layout_mode = 0
+offset_left = 49.0
+offset_top = 1.0
+offset_right = 165.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 14
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureButton4" type="TextureButton" parent="sett/TabContainer/_Controls/Controls" unique_id=811687792]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("18_faisu")
+script = ExtResource("17_2j8sj")
+action = "shoot"
+
+[node name="Label" type="Label" parent="sett/TabContainer/_Controls/Controls/TextureButton4" unique_id=419566944]
+custom_minimum_size = Vector2(128, 48)
+custom_maximum_size = Vector2(128, -1)
+layout_mode = 0
+offset_left = 49.0
+offset_top = 1.0
+offset_right = 165.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 14
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel" type="Panel" parent="sett" unique_id=76771357]
+layout_mode = 2
+
+[node name="Save" type="Button" parent="sett/Panel" unique_id=524622307]
+layout_mode = 0
+offset_left = -81.0
+offset_top = 96.0
+offset_right = 68.0
+offset_bottom = 123.0
+offset_transform_enabled = true
+theme_override_colors/font_color = Color(0.81960785, 0.4, 0.8235294, 1)
+text = "Save Settings"
+
+[connection signal="pressed" from="play/Panel/Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="main/VBoxContainer/buttons/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="main/VBoxContainer/buttons/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="main/VBoxContainer/buttons/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="sett/TabContainer/Settings_/Settings/MasterVolume/VBoxContainer/Slider" to="sett" method="_on_master_volume_changed"]
+[connection signal="value_changed" from="sett/TabContainer/Settings_/Settings/MusicVolume/VBoxContainer/Slider" to="sett" method="_on_music_volume_changed"]
+[connection signal="value_changed" from="sett/TabContainer/Settings_/Settings/SfxVolume/VBoxContainer/Slider" to="sett" method="_on_sfx_volume_changed"]
+[connection signal="toggled" from="sett/TabContainer/Settings_/Settings/SkipCutscenes/CheckBox" to="sett" method="_on_skip_cutscenes_toggled"]
+[connection signal="toggled" from="sett/TabContainer/_Controls/Controls/TextureButton" to="sett/TabContainer/_Controls/Controls/TextureButton" method="_on_toggled"]
+[connection signal="toggled" from="sett/TabContainer/_Controls/Controls/TextureButton2" to="sett/TabContainer/_Controls/Controls/TextureButton2" method="_on_toggled"]
+[connection signal="toggled" from="sett/TabContainer/_Controls/Controls/TextureButton3" to="sett/TabContainer/_Controls/Controls/TextureButton3" method="_on_toggled"]
+[connection signal="toggled" from="sett/TabContainer/_Controls/Controls/TextureButton4" to="sett/TabContainer/_Controls/Controls/TextureButton4" method="_on_toggled"]
+[connection signal="pressed" from="sett/Panel/Save" to="." method="_on_save_settings_pressed"]
+[connection signal="pressed" from="sett/Panel/Save" to="sett" method="_on_save_pressed"]

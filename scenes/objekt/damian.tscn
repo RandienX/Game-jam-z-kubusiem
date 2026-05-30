@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cs8ax52xrqnvk" path="res://scenes/objekt/damian.gd" id="1_dyacw"]
 [ext_resource type="Texture2D" uid="uid://dwnjd1bkissaf" path="res://assets/damian.png" id="2_h53wd"]
+[ext_resource type="Texture2D" uid="uid://cb6cptktgo31j" path="res://assets/tilemaps/damian_ui.png" id="3_uetju"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dyacw"]
 size = Vector2(29, 105)
@@ -90,6 +91,51 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="GDScript" id="GDScript_uetju"]
+script/source = "extends HBoxContainer
+
+func _physics_process(delta: float) -> void:
+	for c in get_children():
+		c.texture.region = Rect2(64.0, 0.0, 64, 64)
+	pass
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu5u8"]
+atlas = ExtResource("3_uetju")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enhl3"]
+atlas = ExtResource("3_uetju")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ftyp"]
+atlas = ExtResource("3_uetju")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="GDScript" id="GDScript_c4t51"]
+script/source = "extends HBoxContainer
+
+func _physics_process(delta: float) -> void:
+	var energy = $\"../../..\".wall_jumps_remaining
+	for c in range(len(get_children())):
+		get_child(c).texture.region = Rect2(0.0, 64.0, 64, 64)
+		if c < energy:
+			get_child(c).texture.region = Rect2(64.0, 64.0, 64, 64)
+		
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5mac"]
+atlas = ExtResource("3_uetju")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5aa0n"]
+atlas = ExtResource("3_uetju")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5oyt"]
+atlas = ExtResource("3_uetju")
+region = Rect2(0, 64, 64, 64)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=102041071]
 script = ExtResource("1_dyacw")
 
@@ -109,3 +155,47 @@ limit_left = -400
 limit_top = -800
 limit_bottom = 800
 position_smoothing_speed = 15.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=721839042]
+
+[node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer" unique_id=1440176196]
+custom_minimum_size = Vector2(960, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="hp" type="HBoxContainer" parent="CanvasLayer/HSplitContainer" unique_id=1922309033]
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+script = SubResource("GDScript_uetju")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HSplitContainer/hp" unique_id=1727977660]
+layout_mode = 2
+texture = SubResource("AtlasTexture_qu5u8")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/HSplitContainer/hp" unique_id=1675693712]
+layout_mode = 2
+texture = SubResource("AtlasTexture_enhl3")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/HSplitContainer/hp" unique_id=1615700128]
+layout_mode = 2
+texture = SubResource("AtlasTexture_2ftyp")
+
+[node name="energy" type="HBoxContainer" parent="CanvasLayer/HSplitContainer" unique_id=1203115467]
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+alignment = 2
+script = SubResource("GDScript_c4t51")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HSplitContainer/energy" unique_id=610501559]
+layout_mode = 2
+texture = SubResource("AtlasTexture_b5mac")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/HSplitContainer/energy" unique_id=1586910623]
+layout_mode = 2
+texture = SubResource("AtlasTexture_5aa0n")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/HSplitContainer/energy" unique_id=1837245482]
+layout_mode = 2
+texture = SubResource("AtlasTexture_k5oyt")
